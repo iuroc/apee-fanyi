@@ -24,7 +24,7 @@
 
 文件名：`langConfig.json`
 
-```json
+```js
 {
     "lang": {},  // 语言和代码列表
     "group": {}  // 语言组合列表
