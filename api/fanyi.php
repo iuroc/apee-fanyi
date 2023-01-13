@@ -26,8 +26,9 @@ $options = array(
         "verify_peer_name" => false,
     )
 );
+print_r($options);
 $context = stream_context_create($options);
-$result = file_get_contents('https://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule', false, $context);
+$result = file_get_contents('https://fanyi.youdao.com/translate_o', false, $context);
 echo $result;
 
 // 获取参数
