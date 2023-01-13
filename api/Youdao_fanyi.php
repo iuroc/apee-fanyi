@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\map;
-
 require('./Lang_info.php');
 /**
  * 有道翻译接口转换为项目接口
