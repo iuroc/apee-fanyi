@@ -12,7 +12,7 @@ if ($result) {
     ]);
 } else {
     echo json_encode([
-        'code' => 400,
+        'code' => 0,
         'msg' => '翻译失败',
         'result' => $result
     ]);
