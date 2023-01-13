@@ -1,0 +1,11 @@
+{
+    "name": "apee-fanyi",
+    "version": "1.0.0",
+    "description": "在线翻译网站，支持多种语言互译，有道翻译 API 提供服务",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "欧阳鹏",
+    "license": "ISC"
+}
