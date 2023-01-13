@@ -6,7 +6,7 @@ require('./Lang_info.php');
  * @author 欧阳鹏
  * @since 2023-01-13
  */
-class Translate
+class Youdao_fanyi
 {
     /** 来源语言代码 */
     public int $from;

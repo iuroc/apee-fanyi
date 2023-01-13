@@ -2,7 +2,7 @@
 
 require('./Youdao_fanyi.php');
 header('Content-Type: application/json');
-$translate = new Translate();
+$translate = new Youdao_fanyi();
 $result = $translate->trans();
 if ($result) {
     echo json_encode([

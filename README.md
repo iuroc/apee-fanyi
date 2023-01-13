@@ -39,7 +39,7 @@
 <?php
 
 require('./Youdao_fanyi.php');  # 引入类库
-$translate = new Translate();  # 实例化对象
+$translate = new Youdao_fanyi();  # 实例化对象
 $result = $translate->trans();  # 启动翻译程序，翻译结果保存到 $result 变量
 ```
 
