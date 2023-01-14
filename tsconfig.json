@@ -2,6 +2,7 @@
     "compilerOptions": {
         "strict": true,
         "esModuleInterop": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "target": "ES3"
     },
 }

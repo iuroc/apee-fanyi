@@ -6,19 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/5.2.3/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 
 <body>
-    <div class="poncon-home poncon-page" style="display: none;">
-        <a href="#/about">主页</a>
+    <div class="container py-5">
+        <h4 class="mb-4">APEE · 翻译工具</h4>
+        <div class="form-floating mb-4">
+            <textarea class="form-control" placeholder="Leave a comment here" style="height: 200px"></textarea>
+            <label>待翻译内容</label>
+        </div>
+        <div class="mb-4 d-flex">
+            <button class="btn btn-success text-nowrap me-3">翻译</button>
+            <select class="form-select" aria-label="Default select example" style="max-width: 300px;">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="form-floating mb-4">
+            <textarea class="form-control" placeholder="Leave a comment here" style="height: 200px"></textarea>
+            <label>翻译结果</label>
+        </div>
     </div>
-    <div class="poncon-about poncon-page" style="display: none;">
-        <a href="#/home">关于</a>
-    </div>
-    <script src="./dist/bundle.min.js"></script>
+    <script src="./dist/bundle.js"></script>
 </body>
 
 </html>
