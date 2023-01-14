@@ -7,5 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "欧阳鹏",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "ponconjs": "^1.0.0"
+    }
 }
