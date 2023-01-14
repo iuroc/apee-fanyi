@@ -10,15 +10,15 @@
 </head>
 
 <body>
-    <div class="container py-5">
+    <div class="container py-4 py-lg-5">
         <h4 class="mb-4">APEE · 翻译工具</h4>
         <div class="form-floating mb-4">
-            <textarea class="form-control" placeholder="Leave a comment here" style="height: 200px"></textarea>
+            <textarea class="form-control input-text" placeholder="待翻译内容" style="height: 200px"></textarea>
             <label>待翻译内容</label>
         </div>
         <div class="mb-4 d-flex">
-            <button class="btn btn-success text-nowrap me-3">翻译</button>
-            <select class="form-select" aria-label="Default select example" style="max-width: 300px;">
+            <button class="btn btn-success text-nowrap me-3 translate">翻译</button>
+            <select class="form-select langGroup" style="max-width: 300px;">
                 <option selected>Open this select menu</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
@@ -26,7 +26,7 @@
             </select>
         </div>
         <div class="form-floating mb-4">
-            <textarea class="form-control" placeholder="Leave a comment here" style="height: 200px"></textarea>
+            <textarea class="form-control input-result" placeholder="翻译结果" style="height: 200px"></textarea>
             <label>翻译结果</label>
         </div>
     </div>
