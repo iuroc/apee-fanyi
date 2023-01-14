@@ -8,12 +8,6 @@ require('./Lang_info.php');
  */
 class Youdao_fanyi implements ITranslate
 {
-    /** 来源语言代码 */
-    public int $from;
-    /** 目标语言代码 */
-    public int $to;
-    /** 待翻译的文本 */
-    public string $text;
     public function trans(string $text, int $from, int $to): array
     {
         $value_salt = time() . '0000';
@@ -61,10 +55,19 @@ class Youdao_fanyi implements ITranslate
     }
     public function start(): array
     {
-        $this->from = (int)($_POST['from'] ?? $_GET['from'] ?? 0);
-        $this->to = (int)($_POST['to'] ?? $_GET['to'] ?? 0);
-        $this->text = $_POST['text'] ?? $_GET['text'] ?? '你好世界';
-        return $this->trans($this->text, $this->from, $this->to);
+        $param = $this->get_param();
+        return $this->trans($param['text'], $param['from'], $param['to']);
+    }
+    public function get_param(): array
+    {
+        $from = (int)($_POST['from'] ?? $_GET['from'] ?? 0);
+        $to = (int)($_POST['to'] ?? $_GET['to'] ?? 0);
+        $text = $_POST['text'] ?? $_GET['text'] ?? '你好世界';
+        return [
+            'text' => $text,
+            'from' => $from,
+            'to' => $to
+        ];
     }
 }
 
@@ -84,4 +87,9 @@ interface ITranslate
      * @return array 翻译结果（二维对象数组，包含 `text` 属性表示翻译结果）
      */
     public function start(): array;
+    /**
+     * 获取 POST 或 GET 请求参数（优先 POST）
+     * @return array 关联数组，请求参数
+     */
+    public function get_param(): array;
 }
