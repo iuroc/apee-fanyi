@@ -26,7 +26,7 @@ $text = $param['text'];
 <body>
     <div class="container py-4 py-lg-5">
         <div class="mb-4 d-flex align-items-center">
-            <h3 class="me-auto mb-0 user-select-none" role="button" onclick="location.href='./'">APEE · 翻译工具</h3>
+            <h3 class="d-none d-sm-block me-auto mb-0 user-select-none" role="button" onclick="location.href='./'">APEE · 翻译工具</h3>
             <button class="btn btn-success text-nowrap me-3 translate">一键翻译</button>
             <select class="form-select langGroup w-auto">
                 <?php
@@ -57,6 +57,7 @@ $text = $param['text'];
             <textarea class="form-control input-result" placeholder="翻译结果" style="height: 200px"><?php echo $translate->get_result_text($text, $from, $to) ?></textarea>
             <label>翻译结果</label>
         </div>
+        <div class="text-end"><a href="https://github.com/oyps/apee-fanyi" class="text-secondary" target="_blank">Github</a></div>
     </div>
     <script src="./dist/bundle.js"></script>
 </body>
