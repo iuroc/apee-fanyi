@@ -1,5 +1,5 @@
 <?php
-
+require('./Lang_info.php');
 require('./Youdao_fanyi.php');
 header('Content-Type: application/json');
 $translate = new Youdao_fanyi();

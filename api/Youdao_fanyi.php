@@ -1,6 +1,5 @@
 <?php
 
-require('./Lang_info.php');
 /**
  * 有道翻译接口转换为项目接口
  * @author 欧阳鹏
@@ -10,6 +9,9 @@ class Youdao_fanyi implements ITranslate
 {
     public function trans(string $text, int $from, int $to): array
     {
+        if (!$text) {
+            $text = 'Hello World';
+        }
         $value_salt = time() . '0000';
         $value_sign = md5("fanyideskweb{$text}{$value_salt}Ygy_4c=r#e#4EX^NUGUc5");
         $value_lts = time() . '000';
@@ -62,12 +64,27 @@ class Youdao_fanyi implements ITranslate
     {
         $from = (int)($_POST['from'] ?? $_GET['from'] ?? 0);
         $to = (int)($_POST['to'] ?? $_GET['to'] ?? 0);
-        $text = $_POST['text'] ?? $_GET['text'] ?? '你好世界';
+        $text = $_POST['text'] ?? $_GET['text'] ?? '';
         return [
             'text' => $text,
             'from' => $from,
             'to' => $to
         ];
+    }
+    public function get_result_text($text, $from, $to): string
+    {
+        if (!$text) {
+            return '';
+        }
+        $result = $this->trans($text, $from, $to);
+        $text = '';
+        foreach ($result as $item) {
+            foreach ($item as $item2) {
+                $text .= $item2['text'];
+            }
+            $text .= "\n";
+        }
+        return trim($text);
     }
 }
 
@@ -92,4 +109,12 @@ interface ITranslate
      * @return array 关联数组，请求参数
      */
     public function get_param(): array;
+    /**
+     * 获取翻译结果纯文本
+     * @param string $text 待翻译文本
+     * @param int $from 来源语言代码
+     * @param int $to 目标语言代码
+     * @return string 翻译结果纯文本
+     */
+    public function get_result_text($text, $from, $to): string;
 }

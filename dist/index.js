@@ -1,16 +1,17 @@
 "use strict";
 exports.__esModule = true;
-var jquery_1 = require("jquery");
-var jQuery = require("jquery");
-console.log(jQuery);
+var post_1 = require("./post");
 loadLangGroup();
 /**
  * 载入翻译组合
  */
 function loadLangGroup() {
-    (0, jquery_1.post)('api/get_lang_info.php', function (data) {
+    (0, post_1.post)('api/get_lang_info.php', function (data) {
         if (data.code == 200) {
-            var optionHtml = makeOptionHtml(data.lang, data.group);
+            /** 下拉菜单 HTML */
+            var optionsHtml = makeOptionHtml(data.lang, data.group);
+            var eleLangGroup = document.querySelector('.langGroup');
+            eleLangGroup.innerHTML = optionsHtml;
             return;
         }
     });
@@ -24,9 +25,10 @@ function loadLangGroup() {
 function makeOptionHtml(lang, group) {
     var html = '';
     group.forEach(function (item) {
-        var from = lang[item[0]];
-        var to = lang[item[1]];
-        console.log(from, to);
+        var fromStr = lang[item[0]];
+        var toStr = lang[item[1]];
+        var text = item[0] == 0 ? '自动识别语言类型' : "".concat(fromStr, " \u7FFB\u8BD1\u4E3A ").concat(toStr);
+        html += "<option>".concat(text, "</option>");
     });
-    return '';
+    return html;
 }
