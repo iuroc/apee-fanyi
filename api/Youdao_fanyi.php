@@ -6,7 +6,7 @@ require('./Lang_info.php');
  * @author 欧阳鹏
  * @since 2023-01-13
  */
-class Youdao_fanyi
+class Youdao_fanyi implements ITranslate
 {
     /** 来源语言代码 */
     public int $from;
@@ -14,25 +14,7 @@ class Youdao_fanyi
     public int $to;
     /** 待翻译的文本 */
     public string $text;
-    /**
-     * 执行翻译
-     * @return string 翻译结果
-     */
-    public function trans(): array
-    {
-        $this->from = (int)($_POST['from'] ?? $_GET['from'] ?? 0);
-        $this->to = (int)($_POST['to'] ?? $_GET['to'] ?? 0);
-        $this->text = $_POST['text'] ?? $_GET['text'] ?? '你好世界';
-        return $this->get_result($this->from, $this->to, $this->text);
-    }
-    /**
-     * 获取有道翻译结果
-     * @param int $from 来源语言代码
-     * @param int $to 目标语言代码
-     * @param string $text 待翻译的文本
-     * @return array 翻译结果 二维对象数组 `[[{},{}],[]]`
-     */
-    public function get_result($from, $to, $text): array
+    public function trans(string $text, int $from, int $to): array
     {
         $value_salt = time() . '0000';
         $value_sign = md5("fanyideskweb{$text}{$value_salt}Ygy_4c=r#e#4EX^NUGUc5");
@@ -77,4 +59,29 @@ class Youdao_fanyi
         }
         return $list;
     }
+    public function start(): array
+    {
+        $this->from = (int)($_POST['from'] ?? $_GET['from'] ?? 0);
+        $this->to = (int)($_POST['to'] ?? $_GET['to'] ?? 0);
+        $this->text = $_POST['text'] ?? $_GET['text'] ?? '你好世界';
+        return $this->trans($this->text, $this->from, $this->to);
+    }
+}
+
+
+interface ITranslate
+{
+    /**
+     * 获取翻译结果
+     * @param string $text 待翻译文本
+     * @param int $from 来源语言代码
+     * @param int $to 目标语言代码
+     * @return array 翻译结果（二维对象数组，包含 `text` 属性表示翻译结果）
+     */
+    public function trans(string $text, int $from, int $to): array;
+    /**
+     * 启动翻译 API 服务
+     * @return array 翻译结果（二维对象数组，包含 `text` 属性表示翻译结果）
+     */
+    public function start(): array;
 }
