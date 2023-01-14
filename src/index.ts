@@ -1,37 +1,45 @@
-import { post, IResponse } from './post'
-
-loadLangGroup()
-/**
- * 载入翻译组合
- */
-function loadLangGroup() {
-    post('api/get_lang_info.php', (data: IResponse) => {
+import { post } from "./ajax"
+import querystring = require('querystring')
+/** 翻译按钮 */
+const buttonTrans = document.querySelector('.translate') as HTMLButtonElement
+/** 待翻译内容输入框 */
+const inputText = document.querySelector('.input-text') as HTMLTextAreaElement
+/** 翻译结果输入框 */
+const inputResult = document.querySelector('.input-result') as HTMLTextAreaElement
+const langGroup = document.querySelector('.langGroup') as HTMLSelectElement
+buttonTrans.onclick = () => {
+    /** 待翻译文本 */
+    const text = inputText.value
+    /** 语言组合 */
+    const langGroupValue = langGroup.value.split('|')
+    /** 来源语言 */
+    const from = langGroupValue[0]
+    /** 目标语言 */
+    const to = langGroupValue[1]
+    if (!text) {
+        return
+    }
+    buttonTrans.disabled = true
+    /** 按钮原来的内容 */
+    const buttText = buttonTrans.innerHTML
+    buttonTrans.innerHTML = '正在翻译'
+    post('api/translate.php', {
+        from: from,
+        to: to,
+        text: text,
+        type: 'text'
+    }, (data) => {
+        buttonTrans.disabled = false
+        buttonTrans.innerHTML = buttText
         if (data.code == 200) {
-            /** 下拉菜单 HTML */
-            const optionsHtml = makeOptionHtml(data.lang, data.group)
-            const eleLangGroup = document.querySelector('.langGroup') as HTMLSelectElement
-            eleLangGroup.innerHTML = optionsHtml
+            inputResult.value = data.result as string
+            history.replaceState(null, '', '?' + querystring.encode({
+                from: from,
+                to: to,
+                text: text,
+            }))
             return
         }
+        alert(data.msg)
     })
 }
-
-
-
-/**
- * 生成语言翻译组合列表 HTML
- * @param lang 语言列表
- * @param group 语言翻译组合
- * @returns 生成的 HTML
- */
-function makeOptionHtml(lang: string[], group: number[][]): string {
-    let html = ''
-    group.forEach(item => {
-        const fromStr = lang[item[0]]
-        const toStr = lang[item[1]]
-        const text = item[0] == 0 ? '自动识别语言类型' : `${fromStr} 翻译为 ${toStr}`
-        html += `<option>${text}</option>`
-    })
-    return html
-}
-

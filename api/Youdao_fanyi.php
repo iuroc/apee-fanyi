@@ -55,9 +55,12 @@ class Youdao_fanyi implements ITranslate
         }
         return $list;
     }
-    public function start(): array
+    public function start(): array|string
     {
         $param = $this->get_param();
+        if ($param['type'] == 'text') {
+            return $this->get_result_text($param['text'], $param['from'], $param['to']);
+        }
         return $this->trans($param['text'], $param['from'], $param['to']);
     }
     public function get_param(): array
@@ -65,10 +68,12 @@ class Youdao_fanyi implements ITranslate
         $from = (int)($_POST['from'] ?? $_GET['from'] ?? 0);
         $to = (int)($_POST['to'] ?? $_GET['to'] ?? 0);
         $text = $_POST['text'] ?? $_GET['text'] ?? '';
+        $type = $_POST['type'] ?? $_GET['type'] ?? 'list';
         return [
             'text' => $text,
             'from' => $from,
-            'to' => $to
+            'to' => $to,
+            'type' => $type
         ];
     }
     public function get_result_text($text, $from, $to): string
@@ -103,7 +108,7 @@ interface ITranslate
      * 启动翻译 API 服务
      * @return array 翻译结果（二维对象数组，包含 `text` 属性表示翻译结果）
      */
-    public function start(): array;
+    public function start(): array|string;
     /**
      * 获取 POST 或 GET 请求参数（优先 POST）
      * @return array 关联数组，请求参数

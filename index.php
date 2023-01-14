@@ -27,7 +27,7 @@ $text = $param['text'];
     <div class="container py-4 py-lg-5">
         <div class="mb-4 d-flex align-items-center">
             <h3 class="me-auto mb-0 user-select-none" role="button" onclick="location.href='./'">APEE · 翻译工具</h3>
-            <button class="btn btn-success text-nowrap me-3 translate">翻译</button>
+            <button class="btn btn-success text-nowrap me-3 translate">一键翻译</button>
             <select class="form-select langGroup w-auto">
                 <?php
                 /** 载入下拉菜单 HTML */
@@ -35,11 +35,13 @@ $text = $param['text'];
                 {
                     global $param;
                     foreach (Lang_info::$group as $item) {
-                        $from = Lang_info::$language[$item[0]];
-                        $to = Lang_info::$language[$item[1]];
+                        $fromCode = $item[0];
+                        $toCode = $item[1];
+                        $from = Lang_info::$language[$fromCode];
+                        $to = Lang_info::$language[$toCode];
                         $text = $item[0] == 0 ? '自动识别语言类型' : "$from - 翻译为 - $to";
                         $selected = $param['from'] == $item[0] && $param['to'] == $item[1] ? 'selected' : '';
-                        echo "<option $selected>$text</option>";
+                        echo "<option value=\"$fromCode|$toCode\" $selected>$text</option>";
                     }
                 }
                 get_lang_group()
