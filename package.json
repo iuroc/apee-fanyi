@@ -5,8 +5,11 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc && browserify js/index.js -o dist/bundle.js && uglifyjs dist/bundle.js -m -c -o dist/bundle.min.js"
+        "build": "tsc && browserify dist/index.js -o dist/bundle.js && uglifyjs dist/bundle.js -m -c -o dist/bundle.js"
     },
     "author": "欧阳鹏",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "ponconjs": "^1.1.6"
+    }
 }
