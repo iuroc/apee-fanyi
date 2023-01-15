@@ -52,6 +52,6 @@ window.onkeydown = function (event) {
 };
 window.onkeyup = function (event) {
     if (event.key == 's' && event.ctrlKey) {
-        buttonTrans.click;
+        buttonTrans.click();
     }
 };
