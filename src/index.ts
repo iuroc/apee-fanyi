@@ -43,3 +43,14 @@ buttonTrans.onclick = () => {
         alert(data.msg)
     })
 }
+
+window.onkeydown = (event: KeyboardEvent) => {
+    if (event.key == 's' && event.ctrlKey) {
+        event.preventDefault()
+    }
+}
+window.onkeyup = (event: KeyboardEvent) => {
+    if (event.key == 's' && event.ctrlKey) {
+        buttonTrans.click
+    }
+}

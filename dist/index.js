@@ -45,3 +45,13 @@ buttonTrans.onclick = function () {
         alert(data.msg);
     });
 };
+window.onkeydown = function (event) {
+    if (event.key == 's' && event.ctrlKey) {
+        event.preventDefault();
+    }
+};
+window.onkeyup = function (event) {
+    if (event.key == 's' && event.ctrlKey) {
+        buttonTrans.click;
+    }
+};
