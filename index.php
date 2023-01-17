@@ -16,12 +16,25 @@ $text = $param['text'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APEE · 翻译工具</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png">
+    <link rel="manifest" href="./icon/site.webmanifest">
+
     <style>
         textarea {
             font-size: 20px !important;
+            height: 300px !important;
         }
+
         * {
             font-family: '仓耳渔阳体';
+        }
+
+        @media screen and (max-width: 992px) {
+            textarea {
+                height: 200px !important;
+            }
         }
     </style>
 </head>
@@ -30,7 +43,9 @@ $text = $param['text'];
     <div class="container py-4 py-lg-5">
         <div class="row">
             <div class="mb-4 col-xxl-9 col-xl-8 col-lg-7 col-md-6">
-                <h3 class="mb-0 user-select-none" role="button" onclick="location.href='./'">APEE · 翻译工具</h3>
+                <div class="d-flex align-items-center">
+                    <h3 class="mb-0 user-select-none" role="button" onclick="location.href='./'">APEE · 翻译工具</h3>
+                </div>
             </div>
             <div class="mb-4 col-xxl-3 col-xl-4 col-lg-5 col-md-6">
                 <div class="d-flex align-items-center">
@@ -60,13 +75,13 @@ $text = $param['text'];
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-floating mb-4">
-                    <textarea class="form-control input-text border-success border border-2" placeholder="待翻译内容" style="height: 200px" <?php echo $text ? '' : 'autofocus' ?>><?php echo $text ?></textarea>
+                    <textarea class="form-control input-text border-success border border-2" placeholder="待翻译内容" <?php echo $text ? '' : 'autofocus' ?>><?php echo $text ?></textarea>
                     <label>待翻译内容</label>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-floating mb-4">
-                    <textarea class="form-control input-result border border-secondary border-2" placeholder="翻译结果" style="height: 200px"><?php echo $translate->get_result_text($text, $from, $to) ?></textarea>
+                    <textarea class="form-control input-result border border-secondary border-2" placeholder="翻译结果"><?php echo $translate->get_result_text($text, $from, $to) ?></textarea>
                     <label>翻译结果</label>
                 </div>
             </div>

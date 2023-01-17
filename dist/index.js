@@ -52,7 +52,6 @@ window.onkeydown = function (event) {
 };
 window.onkeyup = function (event) {
     if (event.key == 's' && event.ctrlKey) {
-        console.log('你按下了翻译按钮哦');
         buttonTrans.click();
     }
 };
