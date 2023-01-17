@@ -91,7 +91,7 @@ $text = $param['text'];
 
         <div class="text-end"><a href="https://github.com/oyps/apee-fanyi" class="text-secondary" target="_blank">Github</a></div>
     </div>
-    <script src="./dist/bundle.js?v=1.0.1"></script>
+    <script src="./dist/bundle.js?v=1.1.0"></script>
 </body>
 
 </html>
