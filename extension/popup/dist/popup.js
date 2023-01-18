@@ -25,7 +25,7 @@ buttonTrans.onclick = function () {
     /** 按钮原来的内容 */
     var buttText = buttonTrans.innerHTML;
     buttonTrans.innerHTML = '正在翻译';
-    (0, ajax_1.post)('api/translate.php', {
+    (0, ajax_1.post)('http://f.apee.top/api/translate.php', {
         from: from,
         to: to,
         text: text,
@@ -45,6 +45,12 @@ buttonTrans.onclick = function () {
         alert(data.msg);
     });
 };
+var buttonClean = document.querySelector('.clear');
+buttonClean.onclick = function () {
+    inputText.value = '';
+    inputResult.value = '';
+    inputText.focus();
+};
 window.onkeydown = function (event) {
     if (event.key == 'Enter' && event.ctrlKey) {
         event.preventDefault();
@@ -55,8 +61,7 @@ window.onkeydown = function (event) {
 };
 window.onkeyup = function (event) {
     if (event.key == 'l' && event.ctrlKey) {
-        inputText.value = '';
-        inputResult.value = '';
+        buttonClean.click();
     }
     if (event.key == 'Enter' && event.ctrlKey) {
         buttonTrans.click();

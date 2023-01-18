@@ -1,0 +1,14 @@
+{
+    "name": "APEE 翻译",
+    "version": "0.0.0.1",
+    "manifest_version": 3,
+    "description": "由鹏优创打造的超简约在线翻译工具",
+    "icons": {
+        "16": "icons/favicon-16x16.png",
+        "32": "icons/favicon-32x32.png",
+        "180": "icons/favicon-180x180.png"
+    },
+    "action": {
+        "default_popup": "popup/popup.html"
+    }
+}

@@ -23,7 +23,7 @@ buttonTrans.onclick = () => {
     /** 按钮原来的内容 */
     const buttText = buttonTrans.innerHTML
     buttonTrans.innerHTML = '正在翻译'
-    post('api/translate.php', {
+    post('http://f.apee.top/api/translate.php', {
         from: from,
         to: to,
         text: text,
@@ -44,6 +44,15 @@ buttonTrans.onclick = () => {
     })
 }
 
+const buttonClean = document.querySelector('.clear') as HTMLButtonElement
+buttonClean.onclick = function () {
+    inputText.value = ''
+    inputResult.value = ''
+    inputText.focus()
+}
+
+
+
 window.onkeydown = (event: KeyboardEvent) => {
     if (event.key == 'Enter' && event.ctrlKey) {
         event.preventDefault()
@@ -54,8 +63,7 @@ window.onkeydown = (event: KeyboardEvent) => {
 }
 window.onkeyup = (event: KeyboardEvent) => {
     if (event.key == 'l' && event.ctrlKey) {
-        inputText.value = ''
-        inputResult.value = ''
+        buttonClean.click()
     }
     if (event.key == 'Enter' && event.ctrlKey) {
         buttonTrans.click()

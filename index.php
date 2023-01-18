@@ -86,10 +86,12 @@ $text = $param['text'];
                 </div>
             </div>
         </div>
-
-
-
-        <div class="text-end"><a href="https://github.com/oyps/apee-fanyi" class="text-secondary" target="_blank">Github</a></div>
+        <div class="d-flex">
+            <div class="me-auto text-muted">
+                快捷键：Ctrl+Enter 翻译，Ctrl+L 清空
+            </div>
+            <a href="https://github.com/oyps/apee-fanyi" class="text-muted" target="_blank">Github</a>
+        </div>
     </div>
     <script src="./dist/bundle.js?v=1.1.0"></script>
 </body>

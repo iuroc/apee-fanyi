@@ -3,4 +3,7 @@
         "strict": true,
         "outDir": "dist",
     },
+    "exclude": [
+        "extension"
+    ]
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style>
+        body {
+            width: 500px;
+        }
+
+        textarea.input-text {
+            height: 150px !important;
+        }
+
+        textarea.input-result {
+            height: 250px !important;
+        }
+    </style>
+</head>
+
+<body class="p-3">
+    <div class="form-floating mb-3">
+        <textarea rows="6" class="form-control input-text" autofocus></textarea>
+        <label>待翻译内容</label>
+    </div>
+    <div class="d-flex mb-3">
+        <select class="form-select langGroup">
+            <option value="0|0" selected="">自动识别语言类型</option>
+            <option value="1|2">中文 - 翻译为 - 英语</option>
+            <option value="2|1">英语 - 翻译为 - 中文</option>
+            <option value="1|3">中文 - 翻译为 - 韩语</option>
+            <option value="3|1">韩语 - 翻译为 - 中文</option>
+            <option value="1|4">中文 - 翻译为 - 日语</option>
+            <option value="4|1">日语 - 翻译为 - 中文</option>
+            <option value="1|5">中文 - 翻译为 - 法语</option>
+            <option value="5|1">法语 - 翻译为 - 中文</option>
+            <option value="1|6">中文 - 翻译为 - 俄语</option>
+            <option value="6|1">俄语 - 翻译为 - 中文</option>
+            <option value="1|7">中文 - 翻译为 - 西班牙语</option>
+            <option value="7|1">西班牙语 - 翻译为 - 中文</option>
+            <option value="1|8">中文 - 翻译为 - 葡萄牙语</option>
+            <option value="8|1">葡萄牙语 - 翻译为 - 中文</option>
+            <option value="1|9">中文 - 翻译为 - 印地语</option>
+            <option value="1|10">中文 - 翻译为 - 阿拉伯语</option>
+            <option value="10|1">阿拉伯语 - 翻译为 - 中文</option>
+            <option value="1|12">中文 - 翻译为 - 德语</option>
+            <option value="12|1">德语 - 翻译为 - 中文</option>
+            <option value="1|15">中文 - 翻译为 - 意大利语</option>
+            <option value="15|1">意大利语 - 翻译为 - 中文</option>
+            <option value="1|17">中文 - 翻译为 - 越南语</option>
+            <option value="17|1">越南语 - 翻译为 - 中文</option>
+            <option value="1|18">中文 - 翻译为 - 印尼语</option>
+            <option value="18|1">印尼语 - 翻译为 - 中文</option>
+            <option value="1|19">中文 - 翻译为 - 荷兰语</option>
+            <option value="19|1">荷兰语 - 翻译为 - 中文</option>
+            <option value="1|20">中文 - 翻译为 - 泰语</option>
+            <option value="20|1">泰语 - 翻译为 - 中文</option>
+        </select>
+        <button class="btn btn-danger text-nowrap ms-3 clear">清空</button>
+        <button class="btn btn-primary text-nowrap ms-3 translate">翻译</button>
+    </div>
+    <div class="form-floating mb-3">
+        <textarea rows="6" class="form-control input-result"></textarea>
+        <label>翻译结果</label>
+    </div>
+    <div class="small text-muted d-flex">
+        <div>快捷键：Ctrl + Enter 翻译，Ctrl + L 清空</div>
+        <div class="ms-auto">
+            <a href="https://github.com/oyps/apee-fanyi" class="text-secondary" target="_blank">Github</a>
+        </div>
+    </div>
+    <script src="./dist/bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@types/node": "^18.11.18",
+    "bootstrap": "^5.2.3"
+  },
+  "scripts": {
+    "build": "tsc && browserify dist/popup.js -o dist/bundle.js && uglifyjs dist/bundle.js -m -c -o dist/bundle.js"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.6"
+  }
+}
