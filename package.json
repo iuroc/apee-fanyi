@@ -1,6 +1,6 @@
 {
     "name": "apee-fanyi",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "在线翻译网站，支持多种语言互译，有道翻译 API 提供服务",
     "main": "index.js",
     "scripts": {
